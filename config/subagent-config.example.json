@@ -1,0 +1,18 @@
+{
+  "status": { "enabled": true },
+  "models": {
+    "default": "anthropic/claude-opus-4-8",
+    "agents": {
+      "scout": "anthropic/claude-haiku-4-5",
+      "research": "anthropic/claude-sonnet-4-6",
+      "research-questions": "anthropic/claude-haiku-4-5",
+      "design": "anthropic/claude-opus-4-8",
+      "structure": "anthropic/claude-opus-4-8",
+      "implementation": "anthropic/claude-opus-4-8",
+      "describe-pr": "anthropic/claude-opus-4-8",
+      "worker": "anthropic/claude-opus-4-8",
+      "planner": "anthropic/claude-opus-4-8",
+      "reviewer": "anthropic/claude-opus-4-8"
+    }
+  }
+}
