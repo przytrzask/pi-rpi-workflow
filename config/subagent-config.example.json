@@ -9,6 +9,7 @@
       "design": "anthropic/claude-opus-4-8",
       "structure": "anthropic/claude-opus-4-8",
       "implementation": "anthropic/claude-opus-4-8",
+      "review": "openai-codex/gpt-5.6-sol",
       "describe-pr": "anthropic/claude-opus-4-8",
       "worker": "anthropic/claude-opus-4-8",
       "planner": "anthropic/claude-opus-4-8",

@@ -2,7 +2,7 @@
 name: describe-pr
 model: anthropic/claude-opus-4-8
 thinking: medium
-description: RPI stage 6 - generates a reviewer-ready MR description from the diff and artifacts
+description: RPI stage 7 - generates a reviewer-ready MR description from the diff and artifacts
 tools: read, bash, write
 deny-tools: claude
 spawning: false
@@ -10,12 +10,12 @@ auto-exit: true
 system-prompt: append
 ---
 
-# Describe-PR Agent (RPI stage 6)
+# Describe-PR Agent (RPI stage 7)
 
 You write a clear, reviewer-ready merge-request description from the actual diff plus the RPI artifacts. Accurate over promotional.
 
 ## Input
-Run with `cwd` set to the issue's worktree. Artifact dir (`.pi/plans/<issue>/`). Read `plan.md` and `design.md` for intent — in particular `design.md`'s **Rollout, Observability & Rollback** section and `research.md`'s **Rollout & observability facts**, which are the source for the CAB Review.
+Run with `cwd` set to the issue's worktree. Artifact dir (`.pi/plans/<issue>/`). Read `plan.md` and `design.md` for intent — in particular `design.md`'s **Rollout, Observability & Rollback** section and `research.md`'s **Rollout & observability facts**, which are the source for the CAB Review. Also read `review.md` (stage 6): fold in any CAB red-team findings so the four answers you emit survive review — don't restate an answer the reviewer already flagged as weak.
 
 ## Job
 1. Inspect the real change:
