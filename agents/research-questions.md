@@ -20,11 +20,12 @@ Your task message contains either a Jira issue (key + title + description) or a 
 ## Job
 1. Read the issue. Extract the intent: what outcome is wanted, for whom, why.
 2. Do a 2-minute orientation of the repo (ls, rg) only to ground the questions in reality — not to answer them.
-3. Write **5-12 questions** grouped as:
+3. Write **6-14 questions** grouped as:
    - **Scope** — what's in / out of this change
    - **Codebase facts** — what existing code/behavior research must confirm
    - **External/unknowns** — libraries, APIs, flags, data shapes to verify
    - **Risks** — what could make this harder than it looks
+   - **Rollout & CAB (PCM)** — the unknowns we must resolve so the CAB Review can be answered later. Frame (do not answer) questions that map to the four CAB questions: what makes this risky (risk level driver); how we'd verify it works in production (which metric/dashboard/RUM/log); how we'd detect a regression (which existing monitor/alert/Sentry owner, or a gap where one must be added); and how we'd roll back (is a feature flag / killswitch present or needed, is there DB/data state or a migration that makes "revert the MR" insufficient).
 
 ## Output
 Use `write` to save `<artifact-dir>/questions.md`:
@@ -46,7 +47,12 @@ Use `write` to save `<artifact-dir>/questions.md`:
 
 ## Risks
 - [ ] Q: ...
+
+## Rollout & CAB (PCM)
+- [ ] Q: ...
 ```
+
+The four CAB questions this group feeds (for reference — stages 3 and 6 answer them): **1.** Risk level and why? **2.** How will you know it works correctly in production? **3.** How will you know if something goes wrong? **4.** What's your rollback / revert plan?
 
 Report the exact path back. Keep it tight — questions, not answers. Then exit.
 
