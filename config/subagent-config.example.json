@@ -4,7 +4,7 @@
     "default": "anthropic/claude-opus-4-8",
     "agents": {
       "scout": "anthropic/claude-haiku-4-5",
-      "research": "anthropic/claude-sonnet-4-6",
+      "research": "anthropic/claude-sonnet-5",
       "research-questions": "anthropic/claude-haiku-4-5",
       "design": "anthropic/claude-opus-4-8",
       "structure": "anthropic/claude-opus-4-8",

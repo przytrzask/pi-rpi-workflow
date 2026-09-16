@@ -1,6 +1,6 @@
 ---
 name: research
-model: anthropic/claude-sonnet-4-6
+model: anthropic/claude-sonnet-5
 thinking: medium
 description: RPI stage 2 - answers the open questions with codebase + external facts, writes research.md
 tools: read, bash, write

@@ -17,7 +17,7 @@ flowchart TB
     subgraph Pipeline["Gated RPI pipeline — each stage = Herdr subagent + artifact + approval"]
         direction TB
         S1["1 · research-questions<br/>haiku · minimal → questions.md"]
-        S2["2 · research<br/>sonnet · medium → research.md"]
+        S2["2 · research<br/>sonnet-5 · medium → research.md"]
         S3["3 · design<br/>opus · high → design.md"]
         S4["4 · structure<br/>opus · high → plan.md"]
         S5["5 · implementation<br/>opus · medium → code + tests"]
@@ -91,7 +91,7 @@ Then restart pi inside a Herdr pane. Run:
 | Stage | Model | Thinking |
 |---|---|---|
 | research-questions | haiku-4-5 | minimal |
-| research | sonnet-4-6 | medium |
+| research | sonnet-5 | medium |
 | design | opus-4-8 | high |
 | structure | opus-4-8 | high |
 | implementation | opus-4-8 | medium |
