@@ -15,7 +15,7 @@ system-prompt: append
 You write a clear, reviewer-ready merge-request description from the actual diff plus the RPI artifacts. Accurate over promotional.
 
 ## Input
-Run with `cwd` set to the issue's worktree. Artifact dir (`.pi/plans/<issue>/`). Read `plan.md` and `design.md` for intent — in particular `design.md`'s **Rollout, Observability & Rollback** section and `research.md`'s **Rollout & observability facts**, which are the source for the CAB Review. Also read `review.md` (stage 6): fold in any CAB red-team findings so the four answers you emit survive review — don't restate an answer the reviewer already flagged as weak. Then read the browser verification from stage 7 (`verify-<target>/verify.md` and `result.json`): its summary table goes into **Testing**, and its result is evidence for CAB answer 2 (works correctly).
+Run with `cwd` set to the issue's worktree. The orchestrator gives you the task dir (absolute path to the HumanLayer task folder, `<worktree>/.humanlayer/tasks/<slug>/`; list it with `ls -La`, it may be a symlink, and use the newest `NN-` file of each kind). Read `ticket.md`, the structure outline and the design discussion for intent — in particular the design discussion's **Rollout, Observability & Rollback** section and the research document's **Rollout & observability facts**, which are the source for the CAB Review. Also read the newest `NN-review.md` (stage 6): fold in any CAB red-team findings so the four answers you emit survive review — don't restate an answer the reviewer already flagged as weak. Then read the browser verification from stage 7 (`NN-verify-<target>.md` and `NN-verify-<target>.result.json`): its summary table goes into **Testing**, and its result is evidence for CAB answer 2 (works correctly).
 
 ## Job
 1. Inspect the real change:
@@ -26,10 +26,10 @@ Run with `cwd` set to the issue's worktree. Artifact dir (`.pi/plans/<issue>/`).
    ```
 2. Summarize what changed and why, grounded in the diff — not the plan's aspirations.
 3. Note test coverage, migrations (should be a SEPARATE MR — flag if present), and any follow-ups.
-4. Write the **CAB Review** (four questions) and a **Rollout** section from the design/research artifacts, grounded in what the diff actually does — links and monitor IDs must be real (pull them from `research.md`); never invent a Datadog/Sentry link. This is the PL-CAB requirement. **The four answers are authoritative in the Jira ticket description, not the MR** — CAB and Product work from Jira, and some reviewers have no GitLab access; the MR copy (and the ASF bot's four questions) is advisory only. So write the four answers so they can be pasted verbatim into the Jira ticket. The bar: *a reviewer who doesn't know your domain can understand the risk.*
+4. Write the **CAB Review** (four questions) and a **Rollout** section from the design/research artifacts, grounded in what the diff actually does — links and monitor IDs must be real (pull them from the research document); never invent a Datadog/Sentry link. This is the PL-CAB requirement. **The four answers are authoritative in the Jira ticket description, not the MR** — CAB and Product work from Jira, and some reviewers have no GitLab access; the MR copy (and the ASF bot's four questions) is advisory only. So write the four answers so they can be pasted verbatim into the Jira ticket. The bar: *a reviewer who doesn't know your domain can understand the risk.*
 
 ## Output
-Use `write` to save `<artifact-dir>/pr.md`, and print it in your summary:
+Use `write` to save `<task dir>/NN-pr-description.md` (name it with the next chronological prefix: `ls -La` the task dir, take the highest `NN-` and add 1.), and print it in your summary:
 
 ```markdown
 ## Summary
@@ -50,7 +50,7 @@ Use `write` to save `<artifact-dir>/pr.md`, and print it in your summary:
 [Flag/killswitch that gates this and how to toggle it, or "no flag — rollback = revert this MR" only when the change is stateless. Call out any DB/data state or migration that a plain revert would not unwind.]
 
 #### Monitoring
-- [Real Datadog monitor link(s) + the channel they page — from research.md]
+- [Real Datadog monitor link(s) + the channel they page — from the research document]
 - [Success dashboard / RUM / metric link]
 - [Sentry `codeowners:` owner]
 

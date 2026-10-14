@@ -16,7 +16,11 @@
       "worker": "anthropic/claude-opus-4-8",
       "planner": "anthropic/claude-opus-4-8",
       "reviewer": "anthropic/claude-opus-4-8",
-      "verify": "anthropic/claude-sonnet-5-5"
+      "verify": "anthropic/claude-sonnet-5-5",
+      "codebase-locator": "anthropic/claude-sonnet-5-5",
+      "codebase-analyzer": "anthropic/claude-sonnet-5-5",
+      "codebase-pattern-finder": "anthropic/claude-sonnet-5-5",
+      "web-search-researcher": "anthropic/claude-sonnet-5-5"
     }
   }
 }
