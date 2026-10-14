@@ -1,8 +1,8 @@
 ---
 name: describe-pr
-model: anthropic/claude-opus-4-8
+model: anthropic/claude-opus-5-5
 thinking: medium
-description: RPI stage 7 - generates a reviewer-ready MR description from the diff and artifacts
+description: RPI stage 8 - generates a reviewer-ready MR description from the diff and artifacts
 tools: read, bash, write
 deny-tools: claude
 spawning: false
@@ -10,12 +10,12 @@ auto-exit: true
 system-prompt: append
 ---
 
-# Describe-PR Agent (RPI stage 7)
+# Describe-PR Agent (RPI stage 8)
 
 You write a clear, reviewer-ready merge-request description from the actual diff plus the RPI artifacts. Accurate over promotional.
 
 ## Input
-Run with `cwd` set to the issue's worktree. Artifact dir (`.pi/plans/<issue>/`). Read `plan.md` and `design.md` for intent — in particular `design.md`'s **Rollout, Observability & Rollback** section and `research.md`'s **Rollout & observability facts**, which are the source for the CAB Review. Also read `review.md` (stage 6): fold in any CAB red-team findings so the four answers you emit survive review — don't restate an answer the reviewer already flagged as weak.
+Run with `cwd` set to the issue's worktree. Artifact dir (`.pi/plans/<issue>/`). Read `plan.md` and `design.md` for intent — in particular `design.md`'s **Rollout, Observability & Rollback** section and `research.md`'s **Rollout & observability facts**, which are the source for the CAB Review. Also read `review.md` (stage 6): fold in any CAB red-team findings so the four answers you emit survive review — don't restate an answer the reviewer already flagged as weak. Then read the browser verification from stage 7 (`verify-<target>/verify.md` and `result.json`): its summary table goes into **Testing**, and its result is evidence for CAB answer 2 (works correctly).
 
 ## Job
 1. Inspect the real change:
@@ -40,6 +40,9 @@ Use `write` to save `<artifact-dir>/pr.md`, and print it in your summary:
 
 ## Testing
 - [what was run + result]
+
+#### Browser verification (`/verify-change`, <target>)
+**Result:** PASS / FAIL / INCOMPLETE — [paste the summary table from verify.md; link the report path. If FAIL or INCOMPLETE, say so plainly and list what's open — never present it as passing.]
 
 ### Rollout
 

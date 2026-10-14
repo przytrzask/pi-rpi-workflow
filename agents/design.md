@@ -1,6 +1,6 @@
 ---
 name: design
-model: anthropic/claude-opus-4-8
+model: anthropic/claude-opus-5-5
 thinking: high
 description: RPI stage 3 - proposes approaches with tradeoffs and a recommended design, writes design.md
 tools: read, bash, write

@@ -1,6 +1,6 @@
 ---
 name: structure
-model: anthropic/claude-opus-4-8
+model: anthropic/claude-opus-5-5
 thinking: high
 description: RPI stage 4 - turns the design into an ordered, self-contained implementation plan with todos, writes plan.md
 tools: read, bash, write

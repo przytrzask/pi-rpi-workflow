@@ -15,6 +15,16 @@ done
 echo "Symlinking /rpi prompt -> $PI/prompts/"
 ln -sf "$SRC/prompts/rpi.md" "$PI/prompts/rpi.md"
 
+# Stage 7 (verify) runs the /verify-change skill. Expose it to pi if it's installed for Claude Code.
+VC="${VERIFY_CHANGE_DIR:-$HOME/.claude/skills/verify-change}"
+if [ -f "$VC/SKILL.md" ]; then
+  mkdir -p "$PI/skills"
+  echo "Symlinking verify-change skill -> $PI/skills/"
+  ln -sfn "$VC" "$PI/skills/verify-change"
+else
+  echo "WARNING: verify-change skill not found at $VC; stage 7 (verify) needs it (see its setup.md)."
+fi
+
 CFG="$PI/extensions/subagent/config.json"
 if [ -f "$CFG" ]; then
   echo "Keeping existing subagent config: $CFG (see config/subagent-config.example.json to merge model routing)"

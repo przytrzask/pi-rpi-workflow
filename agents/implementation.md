@@ -1,6 +1,6 @@
 ---
 name: implementation
-model: anthropic/claude-opus-4-8
+model: anthropic/claude-opus-5-5
 thinking: medium
 description: RPI stage 5 - executes the plan in the worktree, writes code + tests, runs checks
 tools: read, bash, write, edit

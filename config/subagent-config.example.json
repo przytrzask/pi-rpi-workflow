@@ -1,19 +1,22 @@
 {
-  "status": { "enabled": true },
+  "status": {
+    "enabled": true
+  },
   "models": {
-    "default": "anthropic/claude-opus-4-8",
+    "default": "anthropic/claude-opus-5-5",
     "agents": {
       "scout": "anthropic/claude-haiku-4-5",
-      "research": "anthropic/claude-sonnet-5",
-      "research-questions": "anthropic/claude-haiku-4-5",
-      "design": "anthropic/claude-opus-4-8",
-      "structure": "anthropic/claude-opus-4-8",
-      "implementation": "anthropic/claude-opus-4-8",
-      "review": "openai-codex/gpt-5.6-sol",
-      "describe-pr": "anthropic/claude-opus-4-8",
+      "research": "anthropic/claude-sonnet-5-5",
+      "research-questions": "anthropic/claude-sonnet-5-5",
+      "design": "anthropic/claude-opus-5-5",
+      "structure": "anthropic/claude-opus-5-5",
+      "implementation": "anthropic/claude-opus-5-5",
+      "review": "anthropic/claude-sonnet-5-5",
+      "describe-pr": "anthropic/claude-opus-5-5",
       "worker": "anthropic/claude-opus-4-8",
       "planner": "anthropic/claude-opus-4-8",
-      "reviewer": "anthropic/claude-opus-4-8"
+      "reviewer": "anthropic/claude-opus-4-8",
+      "verify": "anthropic/claude-sonnet-5-5"
     }
   }
 }

@@ -1,7 +1,7 @@
 ---
 name: research-questions
-model: anthropic/claude-haiku-4-5
-thinking: minimal
+model: anthropic/claude-sonnet-5-5
+thinking: low
 description: RPI stage 1 - turns an issue into a focused list of open research questions
 tools: read, bash, write
 deny-tools: claude
