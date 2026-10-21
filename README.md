@@ -116,9 +116,11 @@ Change per-agent via the `model:`/`thinking:` frontmatter in each `agents/*.md`,
 
 Stage 7 runs the [`verify-change`](https://gitlab.housecalldev.com/adrian.wawryczuk/payrollaiharness) skill (install it first, see its `setup.md`). It checks what is **served** and never serves it, so at the stage-6 gate the orchestrator asks for:
 
-- the **target**: `local` (default) or `staging`
-- the **flag state** the change needs
-- the worktree **served**: `bin/dev` running from the worktree for local, or pushed and deployed for staging (you push, the pipeline never does)
+- the **target**: **`staging` (default)**, or `local` as a fallback. Ephemeral environments are still a proof of concept, so they aren't offered yet.
+- the **flag state** the change needs on that environment. You set it; the skill only records it.
+- the worktree **served**:
+  - **Staging:** you run `./scripts/push_to_staging.sh` from the worktree; the pipeline never does, because it changes a shared environment. The orchestrator then waits with `wait-for-staging-deploy.sh` until a successful staging deploy contains your commit. Deploys are batched about every 20 minutes; the script type-checks for about 25 minutes on a cold cache; staging is reset to master from time to time. The script **fails from a shallow clone**: run `git fetch --unshallow origin` once (slow), or push from a full clone. Twingate must be on.
+  - **Local:** `bin/dev` running from the worktree, not the main checkout.
 
 It runs `preflight.sh`, then spawns the `verify` agent, which asks for checklist approval in its own pane. The evidence (screenshots, video, traces) stays in the worktree's git-ignored `tmp/verify/`, so it doesn't sync to HumanLayer. `verify.md` and `result.json` are copied into the task folder as `NN-verify-<target>.md` and `NN-verify-<target>.result.json`. The gate reads the result:
 
