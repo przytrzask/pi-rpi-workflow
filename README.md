@@ -148,6 +148,12 @@ Files are named `NN-<kind>-<description>.md`, numbered in order, and the newest 
 - The HumanLayer board stays at Todo/Draft. It's read-only and follows HumanLayer's own workflow phases, which a pi-created task doesn't have.
 - The same "one foreign link" rule is why a repo like `housecall-web`, whose `.humanlayer/tasks/` holds one task made by the HumanLayer app, sends every new pi session into that task. Start `/rpi` with `--humanlayer-task new`; setup stops if it finds another issue's files.
 
+## Golden Signals Gardener and Lab A/B
+
+`gardener/` is the unattended Golden Signals Gardener. It reuses this repo's RPI stage agents, and the Task dir it passes them is a plain `.pi/plans/<slug>/` folder. `lab/` is **Lab A/B**: a before/after comparison of one flagged change on a deployed environment (the MR's dev env, or staging), flag OFF vs ON on the same build and throwaway org. It checks visuals with e2e's `toHaveScreenshot`, measures CLS, failed requests and page errors, and refuses a run whose flag didn't flip. The gardener runs it as stage G7.5 and loops back to implementation when it fails. See [`lab/README.md`](lab/README.md).
+
+Neither is installed by `./install.sh`. Run `gardener/install.sh --dry-run`, then `gardener/install.sh`. It links the prompt, agents, scripts and `lab/` into `~/.pi/agent`, and warns when the installed verify-change can't target dev envs.
+
 ## Notes
 
 - The stage agents embed repo guardrails as an example (feature branch, Public APIs, migrations in their own MR). Adapt the `## Constraints` sections in each agent to your codebase's rules (or your `AGENTS.md`).

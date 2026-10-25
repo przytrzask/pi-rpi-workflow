@@ -18,7 +18,7 @@ You find **which concrete thing makes this view breach each failing SLO dimensio
 Numbers first, code second. You do not change code. The research stage maps your findings to code.
 
 ## Input
-The task message gives you the artifact dir (`.pi/plans/<slug>/`). Read `issue.md` there first. It has the view
+The task message gives you the Task dir (`.pi/plans/<slug>/`). Read `ticket.md` there first. It has the view
 (`@view.url_path_group`), the story key, the live scoreboard row (failing dimensions and values), and the window.
 
 ## Ground rules
@@ -85,7 +85,7 @@ Overall `confidence`:
 The orchestrator only writes code when confidence is `high`. Be honest.
 
 ## Output
-Use `write` to save `<artifact-dir>/diagnosis.md`, starting with this machine-readable header:
+Use `write` to save `<task dir>/diagnosis.md`, starting with this machine-readable header:
 
 ```markdown
 ---
